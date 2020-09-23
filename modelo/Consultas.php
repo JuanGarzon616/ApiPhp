@@ -5,13 +5,13 @@ require("Conexion.php");
 class ConsultasUsuario extends Conexiondb{
     private $conexion;
     public function __construct( ){
-        $this->conexion = Conexiondb::Conex();
+        $this->conexion = ConexionDb::Conex();
     }
     public function insertNewUser($DatoUser, $Table){
         $stmt = $this->conexion->prepare("INSERT INTO $Table(num_usuario, nombre_usuario, segnom_usuario, primer_apellido, segundo_apellido, direccion_usuario, 
         telefono_usuario, segtelefono_usuario, correo_usuario, contraseña_usuario, img_usuario, fk_rolid_rol, fk_tipodocumentoid_documento)
         VALUES (:id,:nam1,:nam2,:nam3,:nam4,:dir,:tel1,:tel2,:mail,:pass,:img,:rol,:tipid')");
-        $stmt->bindParam(':id', $DatoUser['ide'], PDO::PARAM_STR);
+        $stmt->bindParam(':id', $this->id, PDO::PARAM_STR);
         $stmt->bindParam(':nam1', $DatoUser['nom1'], PDO::PARAM_STR);
         $stmt->bindParam(':nam2', $DatoUser['nom2'], PDO::PARAM_STR);
         $stmt->bindParam(':nam3', $DatoUser['nom3'], PDO::PARAM_STR);

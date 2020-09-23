@@ -1,5 +1,5 @@
 <?php
-class Conexiondb{
+class ConexionDb{
     public function Conex(){
         $localhost = "localhost";
         $user      = "root";
