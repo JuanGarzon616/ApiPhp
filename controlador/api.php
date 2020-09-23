@@ -9,8 +9,8 @@ function ParametrosValidos($params){
     if($_SERVER['REQUEST_METHOD']=='POST'){
         $PostData = json_decode(file_get_contents("php://input"), true);
         
-        $NeWUser = new ControllerUser($PostData['']);
-        $Result = $NeWUser->createUserController();
+        $neWUser = new ControllerUser($PostData);
+        $Result = $neWUser->createUserController();
         if($Result){
             $Response['error'] = false;
             $Response['message'] = "usuario agregado correactamente";
