@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="all">
+            <div class="logocrear">
+                <div class="dos2">
+                    <img src="css/logo.png" alt="logo">
+                </div>
+                <div class="uno1">
+                    <h1>Crear Cuenta</h1>
+                </div>
+               
+            
+            </div>
+            <div class="formulariousu">
+                <form action="http://localhost:8080/ProyectoLawpRemasterizado/vista/jsoncreato.php" method="post">
+                    <nav class="nombres">
+                    <input type="text" name="nam1" id="" placeholder="Primer Nombre" maxlength="20" required>
+                    <input type="text" name="nam2" id="" placeholder="Segundo Nombre" maxlength="20">    
+                    </nav>
+                    <nav class="nombres">
+                    <input type="text" name="nam3" id="" placeholder="Primer Apellido" maxlength="20" required>
+                    <input type="text" name="nam4" id="" placeholder="Segundo Apellido" maxlength="20">    
+                    </nav>
+                    <nav class="nombres">
+                    <input type="number" name="identi" id="" placeholder="Numero de Identificacion" maxlength="11" required oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">     
+                    <select name="tipodoc" id="" required>
+                        <option value="">Tipo De Identificacion</option>
+                        <option value="1">TI - Tarjeta de Identidad</option>
+                        <option value="2">CC - Cedula de Ciudadania</option>
+                        <option value="3">CE - Cedula de Extrangeria</option>
+                    </select>
+                       
+                    </nav>
+                    <nav class="nombres">
+                    <input type="number" name="tele1" id="" placeholder="Telefono o Celular 1"  maxlength="20" required oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    <input type="number" name="tele2" id="" placeholder="Telefono o Celular 2" maxlength="20" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                    </nav>
+                    <nav class="nombres">
+                    <input type="text" name="direcc" id="" placeholder="Direccion" maxlength="20" required>
+                    <input type="email" name="correo" id="" placeholder="Correo Electronico" maxlength="30" required>
+                    </nav>
+                    <nav class="nombres">
+                    <input type="password" name="pass1" id="" placeholder="Contraseña" minlength="5" maxlength="30" required >
+                    <input type="password" name="pass2" id="" placeholder="Repetir Contraseña" minlength="5" maxlength="30" required>
+                    </nav>
+                    
+                    
+                    
+                    <input type="submit" name="guardar" value="Aceptar">
+                </form>
+            </div>
+        </div>
+</body>
+</html>
