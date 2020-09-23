@@ -1,4 +1,4 @@
-<?php /*
+<?php 
 if(isset($_POST['guardar'])){
     $users = array(
         "nom1" => $_POST['nam1'],
@@ -19,6 +19,5 @@ if(isset($_POST['guardar'])){
 else{
     echo "holax";
 }
-*/
 
 ?>

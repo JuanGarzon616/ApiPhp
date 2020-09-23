@@ -9,8 +9,8 @@ function ParametrosValidos($params){
     if($_SERVER['REQUEST_METHOD']=='POST'){
         $PostData = json_decode(file_get_contents("php://input"), true);
         
-        $NeWUser = new Controlleruser();
-        $Result = $NeWUser->CreateUserController($PostData);
+        $NeWUser = new ControllerUser($PostData['']);
+        $Result = $NeWUser->createUserController();
         if($Result){
             $Response['error'] = false;
             $Response['message'] = "usuario agregado correactamente";
@@ -19,9 +19,10 @@ function ParametrosValidos($params){
         else{
             $Response['error'] = true;
             $Response['message'] = "usuario no agregado";
-            http_response_code(405);            
+            //http_response_code(405);            
         }
-    }else{
+    }
+    /*else{
         http_response_code(405);
     }
 /*}else{
