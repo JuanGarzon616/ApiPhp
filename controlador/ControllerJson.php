@@ -31,16 +31,14 @@ class ControllerUser{
         $this->img   = "../vista/asset/ImgUsers/default.jpg";
         $this->rol   = 2;
         $this->pass  = $this->hashPass($_POST["pass1"]);
-        var_dump($_POST);
+        //var_dump($_POST);
     }
 
     public function hashPass($pass){
         $PassHashed = password_hash($pass, PASSWORD_DEFAULT);
         return $PassHashed;
     }
-
-    //$user = new ControllerUser;
-
+    
     public function createUserController(){
         
         $respuesta = ConsultasUsuario::insertNewUser($this, "usuario");

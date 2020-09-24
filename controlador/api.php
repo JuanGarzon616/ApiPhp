@@ -11,7 +11,7 @@ function ParametrosValidos($params){
         
         $newUser = new ControllerUser($PostData['ide'],$PostData['tipodoc'],$PostData['nom1'],$PostData['nom2'],$PostData['nom3'],$PostData['nom4'],$PostData['mail'],$PostData['dir'],$PostData['tel1'],$PostData['tel2'],$PostData['contra']);*/
 
-        $parray = array(
+        /*$parray = array(
             "id" => $_POST['identi'],
             "tidoc" => $_POST['tipodoc'],
             "nam1" => $_POST['nam1'],
@@ -23,7 +23,7 @@ function ParametrosValidos($params){
             "tele1" => $_POST['tele1'],
             "tele2" => $_POST['tele2'],
             "contra" => $_POST['pass1']
-        );
+        );*/
         
         $newUser = new ControllerUser();
         $Result = $newUser->createUserController();
@@ -35,7 +35,7 @@ function ParametrosValidos($params){
         else{
             $Response['error'] = true;
             $Response['message'] = "usuario no agregado";
-            //http_response_code(405);            
+            http_response_code(405);            
         }
     }
     /*else{
