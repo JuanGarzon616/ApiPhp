@@ -13,7 +13,7 @@ class ConexionDb{
 }
 //$obj = new Conexiondb();
 //$obj->Conex();
-/*
+
 class UsuarioDaoImp extends Conexiondb{
     private $conexion;
     public function __construct( ){
@@ -33,6 +33,6 @@ if($resultado){
     foreach($resultado as $row=>$item){
         echo $item["nombre_usuario"]."<br>";
     }
-}*/
+}
 
 ?>
