@@ -1,19 +1,26 @@
 <?php
 class ConexionDb{
     public function Conex(){
-        $localhost = "localhost";
-        $user      = "root";
-        $database  = "lawp";
-        $password  = "";
+        try{
+            $localhost = "localhost";
+            $user      = "root";
+            $database  = "lawp";
+            $password  = "";
 
-        $link = new PDO("mysql:host=$localhost;dbname=$database",$user,$password);
+            $link = new PDO("mysql:host=$localhost;dbname=$database",$user,$password);
+            $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch(PDOException $e){
+            echo $e -> getMessage();
+            die();
+        }
 
         return $link;
     }
 }
 //$obj = new Conexiondb();
 //$obj->Conex();
-
+/*
 class UsuarioDaoImp extends Conexiondb{
     private $conexion;
     public function __construct( ){
@@ -33,6 +40,6 @@ if($resultado){
     foreach($resultado as $row=>$item){
         echo $item["nombre_usuario"]."<br>";
     }
-}
+}*/
 
 ?>

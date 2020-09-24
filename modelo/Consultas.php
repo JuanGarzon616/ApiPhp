@@ -2,9 +2,9 @@
 
 require("Conexion.php");
 
-class ConsultasUsuario extends Conexiondb{
-    public $conexion;
-    public function __construct(){
+class ConsultasUsuario extends ConexionDb{
+    private $conexion;
+    public function __construct( ){
         $this->conexion = ConexionDb::Conex();
     }
     public function insertNewUser($DatoUser, $Table){
@@ -22,14 +22,14 @@ class ConsultasUsuario extends Conexiondb{
         $stmt->bindParam(':mail',  $DatoUser->mail,  PDO::PARAM_STR);
         $stmt->bindParam(':pass',  $DatoUser->pass,  PDO::PARAM_STR);
         $stmt->bindParam(':img',   $DatoUser->img,   PDO::PARAM_STR);
-        $stmt->bindParam(':rol',   $DatoUser->img,   PDO::PARAM_INT);
+        $stmt->bindParam(':rol',   $DatoUser->rol,   PDO::PARAM_INT);
         $stmt->bindParam(':tipid', $DatoUser->tipId, PDO::PARAM_INT);
         var_dump($DatoUser);
         if($stmt->execute()){
-            return true;
+            echo "funciono";
         }
         else{
-            return false;
+            echo "no funciono";
         }
     }
 
