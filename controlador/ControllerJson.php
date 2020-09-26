@@ -1,6 +1,6 @@
 <?php
 
-require("../modelo/Consultas.php");
+require("../modelo/ConsultasUsuario.php");
 
 class ControllerUser{
     public $id;
