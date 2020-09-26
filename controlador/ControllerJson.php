@@ -40,7 +40,6 @@ class ControllerUser{
     }
     
     public function createUserController(){
-        
         $respuesta = ConsultasUsuario::insertNewUser($this, "usuario");
         return $respuesta;
     }
