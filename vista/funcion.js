@@ -20,7 +20,7 @@ function listarDatos(){
 }
 function guardar(){
 
-    fetch('http://localhost:8080/ProyectoLawpRemasterizado/ApiPhp/vista/pruebadejson.php',{
+    fetch('http://localhost:8080/ProyectoLawpRemasterizado/ApiPhp/controlador/api.php',{
         method: 'POST',
         body: JSON.stringify( listarDatos() ),
         headers: {
