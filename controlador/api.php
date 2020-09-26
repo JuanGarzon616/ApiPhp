@@ -13,7 +13,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         echo json_encode("si llego esa vaina");
         echo $codificado;
     }
-elseif($_SERVER['REQUEST_METHOD']=='GET'){
+}
+else if($_SERVER['REQUEST_METHOD']=='GET'){
     $obtener = file_get_contents("php://input");  
     $_GET = json_decode($obtener, true);
         
@@ -23,7 +24,6 @@ elseif($_SERVER['REQUEST_METHOD']=='GET'){
         echo json_encode("llego vacio");
     }else{
         echo json_encode("si llego esa vaina");
-        echo $codificado;
     }
 }
 

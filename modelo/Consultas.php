@@ -35,10 +35,10 @@ class ConsultasUsuario extends ConexionDb{
 
 
     public function readUsuarioModel($id, $tidoc, $Table){
-        $stmt = $this->conexion->prepare("SELECT num_usuario, nombre_usuario, segnom_usuario, primer_apellido, segundo_apellido, 
-        telefono_usuario,correo_usuario, contraseña_usuario, fk_rolid_rol, fk_tipodocumentoid_documento FROM $table where num_usuario = :id AND fk_tipodocumentoid_documento = :tipDoc");
-        $stmt = bindParam(':id',     $id,    PDO::PARAM_STR);
-        $stmt = bindParam(':tipDoc', $tidoc, PDO::PARAM_STR);
+        $stmt = ConexionDb::Conex()->prepare("SELECT num_usuario, nombre_usuario, segnom_usuario, primer_apellido, segundo_apellido, 
+        telefono_usuario,correo_usuario, contraseña_usuario, fk_rolid_rol, fk_tipodocumentoid_documento FROM $Table where num_usuario = :id AND fk_tipodocumentoid_documento = :tipDoc");
+        $stmt->bindParam(':id',     $id,    PDO::PARAM_STR);
+        $stmt->bindParam(':tipDoc', $tidoc, PDO::PARAM_STR);
         $stmt->execute();
 
         $stmt->bindColumn("num_usuario", $num_usuario);
@@ -49,9 +49,8 @@ class ConsultasUsuario extends ConexionDb{
         $stmt->bindColumn("telefono_usuario", $telefono_usuario);
         $stmt->bindColumn("correo_usuario", $correo_usuario);
         $stmt->bindColumn("contraseña_usuario", $contraseña_usuario);
-        $stmt->bindColumn("img_usuario", $img);
         $stmt->bindColumn("fk_rolid_rol", $rol);
-        $stmt->bindColumn("created", $created);
+        $stmt->bindColumn("fk_tipodocumentoid_documento", $id_tip);
         $usuarios = array();
 
         while ($fila = $stmt->fetch(PDO::FETCH_BOUND)){
@@ -66,16 +65,16 @@ class ConsultasUsuario extends ConexionDb{
             $user["telefono_usuario"] = utf8_encode($telefono_usuario);
             $user["correo_usuario"] = utf8_encode($correo_usuario);
             $user["contraseña_usuario"] = utf8_encode($contraseña_usuario);
-            $user["img_usuario"] = utf8_encode($img_usuario);
-            $user["fk_rolid_rol"] = utf8_encode($fk_rolid_rol);
-            $user["created"] = utf8_encode($created);
+            $user["fk_rolid_rol"] = utf8_encode($rol);
+            $user["fk_tipodocumentoid_documento"] = utf8_encode($id_tip);
 
             array_push($usuarios, $user);
         }
         return $usuarios;
+    }
 
     public function updateUsuarioModel($datosModel, $table){
-          $stmt =  $this->conexion->prepare("UPDATE $table set contraseña_usuario =
+          $stmt =  ConexionDb::Conex()->prepare("UPDATE $table set contraseña_usuario =
           :pass WHERE num_usuario = :id");
 
         $stmt->bindParam(":pass", $datosModel ["contraseña_usuario"], PDO::PARAM_STR);
@@ -95,7 +94,8 @@ class ConsultasUsuario extends ConexionDb{
         else{
             echo "No funciono eliminar";
         }
-     
+    }
+
      public function loginUsuarioModel($datosModel, $table){
          $stmt =  ConexionDb::Conex()->prepare("SELECT num_usuario, nombre_usuario, segnom_usuario, primer_apellido, segundo_apellido, direccion_usuario, 
          telefono_usuario, segtelefono_usuario, correo_usuario, contraseña_usuario, img_usuario, fk_rolid_rol, fk_tipodocumentoid_documento, created FROM $table WHERE correo_usuario AND contraseña_usuario = :pass");
@@ -141,6 +141,7 @@ class ConsultasUsuario extends ConexionDb{
              return false;
          }         
     }
+
 }
 
 ?>
