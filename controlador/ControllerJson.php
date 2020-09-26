@@ -43,6 +43,17 @@ class ControllerUser{
         $respuesta = ConsultasUsuario::insertNewUser($this, "usuario");
         return $respuesta;
     }
+
+    public function readUsuariosController(){
+        $respuesta = Datos::readUsuarioModel("usuarios");
+        return $respuesta;
+    }
+
+    public function deleteUserController($id, $pass){
+        $datosController = array("num_usuario"=>$id, "contraseña_usuario"=>$pass);
+        $respuesta = Datos::updateUsuarioModel($datosController, "usuarios");
+        return $respuesta;
+    }
 }
 
 ?>
