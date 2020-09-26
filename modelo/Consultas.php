@@ -34,11 +34,11 @@ class ConsultasUsuario extends ConexionDb{
     }
 
 
-    public function readUsuarioModel($DatoUser, $Table){
+    public function readUsuarioModel($id, $tidoc, $Table){
         $stmt = $this->conexion->prepare("SELECT num_usuario, nombre_usuario, segnom_usuario, primer_apellido, segundo_apellido, 
         telefono_usuario,correo_usuario, contraseña_usuario, fk_rolid_rol, fk_tipodocumentoid_documento FROM $table where num_usuario = :id AND fk_tipodocumentoid_documento = :tipDoc");
-        $stmt = bindParam(':id',     $DatoUser->id,    PDO::PARAM_STR);
-        $stmt = bindParam(':tipDoc', $DatoUser->tipId, PDO::PARAM_STR);
+        $stmt = bindParam(':id',     $id,    PDO::PARAM_STR);
+        $stmt = bindParam(':tipDoc', $tidoc, PDO::PARAM_STR);
         $stmt->execute();
 
         $stmt->bindColumn("num_usuario", $num_usuario);
@@ -73,7 +73,6 @@ class ConsultasUsuario extends ConexionDb{
             array_push($usuarios, $user);
         }
         return $usuarios;
-<<<<<<< HEAD
 
     public function updateUsuarioModel($datosModel, $table){
           $stmt =  $this->conexion->prepare("UPDATE $table set contraseña_usuario =
@@ -141,8 +140,6 @@ class ConsultasUsuario extends ConexionDb{
          }else{
              return false;
          }         
-=======
->>>>>>> cf356d9ab40563e760fb17d596c063d67ea377b5
     }
 }
 
