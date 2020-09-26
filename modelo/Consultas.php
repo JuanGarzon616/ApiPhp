@@ -32,6 +32,7 @@ class ConsultasUsuario extends ConexionDb{
             echo "no funciono";
         }
     }
+<<<<<<< Updated upstream
     public function readUsuarioModel($Table){
         $stmt = $this->conexion->prepare("SELECT num_usuario, nombre_usuario, segnom_usuario, primer_apellido, segundo_apellido, 
         telefono_usuario,correo_usuario, contraseña_usuario,
@@ -72,6 +73,53 @@ class ConsultasUsuario extends ConexionDb{
         return $usuarios;
 
 
+=======
+<<<<<<< HEAD
+    
+
+=======
+    public function readUsuarioModel($Table){
+        $stmt = $this->conexion->prepare("SELECT num_usuario, nombre_usuario, segnom_usuario, primer_apellido, segundo_apellido, 
+        telefono_usuario,correo_usuario, contraseña_usuario,
+         img_usuario, fk_rolid_rol, created FROM $table");
+        $stmt->execute();
+
+        $stmt->bindParam("num_usuario", $num_usuario);
+        $stmt->bindParam("nombre_usuario", $nombre_usuario);
+        $stmt->bindParam("segnom_usuario", $segnom_usuario);
+        $stmt->bindParam("primer_apellido", $primer_apellido);
+        $stmt->bindParam("segundo_apellido", $segundo_apellido);
+        $stmt->bindParam("telefono_usuario", $telefono_usuario);
+        $stmt->bindParam("correo_usuario", $correo_usuario);
+        $stmt->bindParam("contraseña_usuario", $contraseña_usuario);
+        $stmt->bindParam("img_usuario", $img_usuario);
+        $stmt->bindParam("fk_rolid_rol", $fk_rolid_rol);
+        $stmt->bindParam("created", $created);
+        $usuarios = array();
+
+        while ($fila = $stmt->fetch(PDO::FETCH_BOUND)){
+            
+            $user = array();
+            
+            $user["num_usuario"] = utf8_encode($num_usuario);
+            $user["nombre_usuario"] = utf8_encode($nombre_usuario);
+            $user["segnom_usuario"] = utf8_encode($segnom_usuario);
+            $user["primer_apellido"] = utf8_encode($primer_apellido);
+            $user["segundo_apellido"] = utf8_encode($segundo_apellido);
+            $user["telefono_usuario"] = utf8_encode($telefono_usuario);
+            $user["correo_usuario"] = utf8_encode($correo_usuario);
+            $user["contraseña_usuario"] = utf8_encode($contraseña_usuario);
+            $user["img_usuario"] = utf8_encode($img_usuario);
+            $user["fk_rolid_rol"] = utf8_encode($fk_rolid_rol);
+            $user["created"] = utf8_encode($created);
+
+            array_push($usuarios, $user);
+        }
+        return $usuarios;
+>>>>>>> 4049997ea304545e065baac66b15da08dd5216ea
+
+
+>>>>>>> Stashed changes
   
 }
 

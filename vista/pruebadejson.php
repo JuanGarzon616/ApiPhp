@@ -10,6 +10,12 @@ if($codificado ===''){
     echo json_encode("llego vacio");
 }else{
     echo json_encode("si llego esa vaina");
+    echo $codificado;
 }
 
+
+/*
+if(!empty(trim($_POST['nam1']))){
+
+}*/
 ?>

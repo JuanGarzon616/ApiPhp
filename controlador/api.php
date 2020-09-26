@@ -9,6 +9,13 @@ function ParametrosValidos($params){
     if($_SERVER['REQUEST_METHOD']=='POST'){
         $_POST = json_decode(file_get_contents("php://input"), true);
 
+
+
+        $ejemplo = array(
+            "mensaje": "hola"
+        );
+        
+        json_encode($ejemplo);
         
         $newUser = new ControllerUser();
         $Result = $newUser->createUserController();
