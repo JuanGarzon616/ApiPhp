@@ -1,6 +1,6 @@
 <?php
 
-require("../modelo/ConsultasUsuario.php");
+require("../modelo/ConsultasUsuarios.php");
 
 class ControllerUser{
     public $id;
@@ -58,7 +58,7 @@ class ControllerUser{
         return $respuesta3;
     }
 
-    public function deleteUsuario($id){
+    public function deleteUsuario($id,){
         $respuesta4 = Datos::deleteUsuarioModel($id, "usuario");
         return $respuesta4;
     }

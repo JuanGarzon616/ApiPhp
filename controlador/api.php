@@ -14,7 +14,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         echo $codificado;
     }
 }
-else if($_SERVER['REQUEST_METHOD']=='GET'){
+elseif($_SERVER['REQUEST_METHOD']=='GET'){
     $obtener = file_get_contents("php://input");  
     $_GET = json_decode($obtener, true);
         
@@ -26,6 +26,18 @@ else if($_SERVER['REQUEST_METHOD']=='GET'){
         echo json_encode("si llego esa vaina");
         echo json_encode($Result);
     } 
+}elseif($_SERVER['REQUEST_METHOD']=='PUT'){
+    $obtener = file_get_contents("php://input");  
+    $_GET = json_decode($obtener, true);
+        
+    $newUser = new ControllerUser();
+    $Result = $newUser->readUsuariosController();
+    if($obtener ===''){
+        echo json_encode("llego vacio");
+    }else{
+        echo json_encode("si llego esa vaina");
+        echo json_encode($Result);
+    }
 }
 
 ?>

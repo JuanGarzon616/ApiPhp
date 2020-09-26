@@ -74,8 +74,7 @@ class ConsultasUsuario extends ConexionDb{
     }
 
     public function updateUsuarioModel($datosModel, $table){
-          $stmt =  ConexionDb::Conex()->prepare("UPDATE $table set contraseña_usuario =
-          :pass WHERE num_usuario = :id");
+          $stmt =  ConexionDb::Conex()->prepare("UPDATE $table set contraseña_usuario = :pass WHERE num_usuario = :id");
 
         $stmt->bindParam(":pass", $datosModel ["contraseña_usuario"], PDO::PARAM_STR);
         $stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_INT);
@@ -85,7 +84,7 @@ class ConsultasUsuario extends ConexionDb{
             echo"No se pudo hacer la Actualizacion";
         }
      }
-     public function deleteUser ($id) {
+     public function deleteUser($id, $table) {
         $stmt = ConexionDb::Conex()->prepare("DELETE FROM USUARIO WHERE USUARIO.NUM_USUARIO = :id AND USUARIO.FK_TIPODOCUMENTOID_DOCUMENTO = 1");
         $stmt->bindParam(':id',    $id,    PDO::PARAM_STR);
         if($stmt->execute()){
