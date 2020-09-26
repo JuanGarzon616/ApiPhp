@@ -13,9 +13,7 @@ if($codificado ===''){
     echo $codificado;
 }
 
+var_dump($_POST);
 
-/*
-if(!empty(trim($_POST['nam1']))){
 
-}*/
 ?>
