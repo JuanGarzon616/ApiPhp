@@ -54,6 +54,19 @@ class ControllerUser{
         $respuesta = Datos::updateUsuarioModel($datosController, "usuarios");
         return $respuesta;
     }
+
+    public function deleteUsuario($id){
+        $respuesta = Datos::deleteUsuarioModel($id, "usuarios");
+        return $respuesta;
+    }
+
+    public function loginUsuarioController($mail, $pass){
+            $datosController = array("correo_usuario" => $mail, 
+            "contraseña_usuario"=>$pass);
+
+            $respuesta = Datos::loginUsuarioModel($datosController, "usuarios");
+            return $respuesta;
+    }
 }
 
 ?>
