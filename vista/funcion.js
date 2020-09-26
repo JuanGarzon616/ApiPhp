@@ -1,7 +1,3 @@
-//$(datos());
-/*$(function(){}){
-    guardar();
-}*/
 
 function listarDatos(){
 
@@ -19,39 +15,20 @@ function listarDatos(){
         identi:  form.identi.value,
         pass1:   form.pass1.value
     };
-
     console.log(datos);
-
-    return datos;
+        return datos;
 }
 function guardar(){
-    var json = JSON.stringify( listarDatos() );
-    console.log(json);
+
+    fetch('http://localhost:8080/ProyectoLawpRemasterizado/ApiPhp/vista/pruebadejson.php',{
+        method: 'POST',
+        body: JSON.stringify( listarDatos() ),
+        headers: {
+            "Content-type": "application/json",
+            "Accept": "application/json"
+        }
+    }).then(res => res.text())
+    .then(data => console.log(data));
 }
 
-/*
-function datos(consulta){
-    $.ajax({
-        url: 'codigos/buscar.php',
-        type: 'POST',
-        dataType: 'html',
-        data: {consulta: consulta},
-    })
-    .done(function(respuesta){
-        $("#datos").html(respuesta);
-    })
-    .fail(function(){
-        console.log("error");
-    })
-}
-
-
-$(document).on('keyup', '#caja_busqueda', function(){
-    var valor = $(this).val();
-    if(valor !=" "){
-        buscarDatos(valor);
-    }else{
-        buscar_datos();
-    }
-});*/
 
