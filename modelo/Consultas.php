@@ -32,23 +32,26 @@ class ConsultasUsuario extends ConexionDb{
             echo "no funciono";
         }
     }
-    public function readUsuarioModel($Table){
+
+
+    public function readUsuarioModel($DatoUser, $Table){
         $stmt = $this->conexion->prepare("SELECT num_usuario, nombre_usuario, segnom_usuario, primer_apellido, segundo_apellido, 
-        telefono_usuario,correo_usuario, contraseña_usuario,
-         img_usuario, fk_rolid_rol, created FROM $table");
+        telefono_usuario,correo_usuario, contraseña_usuario, fk_rolid_rol, fk_tipodocumentoid_documento FROM $table where num_usuario = :id AND fk_tipodocumentoid_documento = :tipDoc");
+        $stmt = bindParam(':id',     $DatoUser->id,    PDO::PARAM_STR);
+        $stmt = bindParam(':tipDoc', $DatoUser->tipId, PDO::PARAM_STR);
         $stmt->execute();
 
-        $stmt->bindParam("num_usuario", $num_usuario);
-        $stmt->bindParam("nombre_usuario", $nombre_usuario);
-        $stmt->bindParam("segnom_usuario", $segnom_usuario);
-        $stmt->bindParam("primer_apellido", $primer_apellido);
-        $stmt->bindParam("segundo_apellido", $segundo_apellido);
-        $stmt->bindParam("telefono_usuario", $telefono_usuario);
-        $stmt->bindParam("correo_usuario", $correo_usuario);
-        $stmt->bindParam("contraseña_usuario", $contraseña_usuario);
-        $stmt->bindParam("img_usuario", $img_usuario);
-        $stmt->bindParam("fk_rolid_rol", $fk_rolid_rol);
-        $stmt->bindParam("created", $created);
+        $stmt->bindColumn("num_usuario", $num_usuario);
+        $stmt->bindColumn("nombre_usuario", $nombre_usuario);
+        $stmt->bindColumn("segnom_usuario", $segnom_usuario);
+        $stmt->bindColumn("primer_apellido", $primer_apellido);
+        $stmt->bindColumn("segundo_apellido", $segundo_apellido);
+        $stmt->bindColumn("telefono_usuario", $telefono_usuario);
+        $stmt->bindColumn("correo_usuario", $correo_usuario);
+        $stmt->bindColumn("contraseña_usuario", $contraseña_usuario);
+        $stmt->bindColumn("img_usuario", $img);
+        $stmt->bindColumn("fk_rolid_rol", $rol);
+        $stmt->bindColumn("created", $created);
         $usuarios = array();
 
         while ($fila = $stmt->fetch(PDO::FETCH_BOUND)){
@@ -70,6 +73,7 @@ class ConsultasUsuario extends ConexionDb{
             array_push($usuarios, $user);
         }
         return $usuarios;
+<<<<<<< HEAD
 
     public function updateUsuarioModel($datosModel, $table){
           $stmt =  $this->conexion->prepare("UPDATE $table set contraseña_usuario =
@@ -137,6 +141,8 @@ class ConsultasUsuario extends ConexionDb{
          }else{
              return false;
          }         
+=======
+>>>>>>> cf356d9ab40563e760fb17d596c063d67ea377b5
     }
 }
 

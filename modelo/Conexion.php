@@ -20,6 +20,7 @@ class ConexionDb{
 }
 //$obj = new Conexiondb();
 //$obj->Conex();
+
 /*
 class UsuarioDaoImp extends Conexiondb{
     private $conexion;
