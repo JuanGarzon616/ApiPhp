@@ -19,7 +19,7 @@ elseif($_SERVER['REQUEST_METHOD']=='GET'){
         
     $newUser = new ControllerUser();
     $Result = $newUser->readUsuariosController();
-    if($codificado ===''){
+    if($obtener ===''){
         echo json_encode("llego vacio");
     }else{
         echo json_encode("si llego esa vaina");
