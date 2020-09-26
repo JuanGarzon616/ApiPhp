@@ -71,7 +71,10 @@ class ConsultasUsuario extends ConexionDb{
             array_push($usuarios, $user);
         }
         return $usuarios;
+<<<<<<< Updated upstream
     }
+=======
+>>>>>>> Stashed changes
 
     public function updateUsuarioModel($datosModel, $table){
           $stmt =  ConexionDb::Conex()->prepare("UPDATE $table set contraseña_usuario =
