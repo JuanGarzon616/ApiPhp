@@ -31,12 +31,11 @@ elseif($_SERVER['REQUEST_METHOD']=='GET'){
     $_GET = json_decode($obtener, true);
         
     $newUser = new ControllerUser();
-    $Result = $newUser->readUsuariosController();
+    $Result = $newUser->updateUserController();
     if($obtener ===''){
         echo json_encode("llego vacio");
     }else{
-        echo json_encode("si llego esa vaina");
-        echo json_encode($Result);
+        echo json_encode("Se actualizo");
     }
 }
 

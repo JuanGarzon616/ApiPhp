@@ -21,10 +21,9 @@ class ControllerUser{
         $PassHashed = password_hash($pass, PASSWORD_DEFAULT);
         return $PassHashed;
     }
-    
-    public function createUserController(){
 
-        function __construct(){
+    public function __construct(){
+        if(!empty($_POST['identi'])){
             $this->id    = $_POST['identi'];
             $this->tipId = $_POST["tipodoc"];
             $this->nam1  = $_POST["nam1"];
@@ -37,10 +36,12 @@ class ControllerUser{
             $this->tel2  = $_POST["tele2"];
             $this->img   = "../vista/asset/ImgUsers/default.jpg";
             $this->rol   = 2;
-            $this->pass  = $this->hashPass($_POST["pass1"]);
-            //var_dump($_POST);
+            $this->pass  = $this->hashPass($_POST["pass1"]);            
         }
-
+            //var_dump($_POST);
+    }    
+    
+    public function createUserController(){
         $respuesta1 = ConsultasUsuario::insertNewUser($this, "usuario");
         return $respuesta1;
     }
@@ -52,23 +53,21 @@ class ControllerUser{
         return $respuesta2;
     }
 
-    public function deleteUserController($id, $pass){
-        $datosController = array("num_usuario"=>$id, "contraseña_usuario"=>$pass);
-        $respuesta3 = Datos::updateUsuarioModel($datosController, "usuario");
+    public function updateUserController(){
+        $datosController = array("num_usuario"=>$_GET['id'], "contraseña_usuario"=>$_GET['pass']);
+        $respuesta3 = ConsultasUsuario::updateUsuarioModel($datosController, "usuario");
         return $respuesta3;
     }
 
-    public function deleteUsuario($id,){
-        $respuesta4 = Datos::deleteUsuarioModel($id, "usuario");
+    public function deleteUsuarioController(){
+        $respuesta4 = ConsultasUsuario::deleteUsuarioModel($id, "usuario");
         return $respuesta4;
     }
 
     public function loginUsuarioController($mail, $pass){
-            $datosController = array("correo_usuario" => $mail, 
-            "contraseña_usuario"=>$pass);
-
-            $respuesta5 = Datos::loginUsuarioModel($datosController, "usuario");
-            return $respuesta5;
+        $datosController = array("correo_usuario" => $mail, "contraseña_usuario"=>$pass);
+        $respuesta5 = ConsultasUsuario::loginUsuarioModel($datosController, "usuario");
+        return $respuesta5;
     }
 }
 
