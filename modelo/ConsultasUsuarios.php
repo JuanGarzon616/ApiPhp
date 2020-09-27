@@ -76,8 +76,8 @@ class ConsultasUsuario extends ConexionDb{
     public function updateUsuarioModel($datosModel, $table){
           $stmt =  ConexionDb::Conex()->prepare("UPDATE $table set contraseña_usuario = :pass WHERE num_usuario = :id");
 
-        $stmt->bindParam(":pass", $datosModel ["contraseña_usuario"], PDO::PARAM_STR);
-        $stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_INT);
+        $stmt->bindParam(":pass", $datosModel["contraseña_usuario"], PDO::PARAM_STR);
+        $stmt->bindParam(":id", $datosModel["num_usuario"], PDO::PARAM_INT);
         if($stmt->execute()){
             echo "Actualizacion Exitosa";
         }else{

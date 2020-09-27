@@ -70,7 +70,7 @@ class ConsultasPqr extends ConexionDb{
     }
 
     public Function updatePqrModel ($datosModel, $tabla){
-        $stmt = ConexionDb::Conex()->prepare("UPDATE $tabla set estado_pqr = :estado_pqr WHERE Id_pqr = Id_pqr"); 
+        $stmt = ConexionDb::Conex()->prepare("UPDATE $tabla set estado_pqr = :estado_pqr WHERE Id_pqr = :Id_pqr"); 
 
         $stmt->bindParam (":estado_pqr", $datosModel["estado_pqr"], PDO::PARAM_STR);
         $stmt->bindParam (":Id_pqr", $DatosModel["Id_pqr"], PDO::PARAM_STR); 

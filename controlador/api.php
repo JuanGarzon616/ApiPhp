@@ -18,8 +18,8 @@ elseif($_SERVER['REQUEST_METHOD']=='GET'){
     $obtener = file_get_contents("php://input");  
     $_GET = json_decode($obtener, true);
         
-    $newUser = new ControllerUser();
-    $Result = $newUser->readUsuariosController();
+    $getUser = new ControllerUser();
+    $Result = $getUser->readUsuariosController();
     if($obtener ===''){
         echo json_encode("llego vacio");
     }else{
@@ -27,16 +27,26 @@ elseif($_SERVER['REQUEST_METHOD']=='GET'){
         echo json_encode($Result);
     } 
 }elseif($_SERVER['REQUEST_METHOD']=='PUT'){
-    $obtener = file_get_contents("php://input");  
-    $_GET = json_decode($obtener, true);
-        
-    $newUser = new ControllerUser();
-    $Result = $newUser->updateUserController();
-    if($obtener ===''){
+    $_GET = json_decode(file_get_contents("php://input"), true);
+    //var_dump($loquesea);
+    $putUser = new ControllerUser();
+    $Result = $putUser->updateUserController();
+    if($_GET ===''){
         echo json_encode("llego vacio");
     }else{
         echo json_encode("Se actualizo");
     }
+}elseif($_SERVER['REQUEST_METHOD']=='DELETE'){
+    $obtener = file_get_contents("php://input");  
+    $_GET = json_decode($obtener, true);
+        
+    $delUser = new ControllerUser();
+    $Result = $delUser->deleteUsuarioController();
+    if($obtener ===''){
+        echo json_encode("llego vacio");
+    }else{
+        echo json_encode("Se actualizo");
+    } 
 }
 
 ?>
