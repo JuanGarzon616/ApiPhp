@@ -71,10 +71,7 @@ class ConsultasUsuario extends ConexionDb{
             array_push($usuarios, $user);
         }
         return $usuarios;
-<<<<<<< Updated upstream
     }
-=======
->>>>>>> Stashed changes
 
     public function updateUsuarioModel($datosModel, $table){
           $stmt =  ConexionDb::Conex()->prepare("UPDATE $table set contraseña_usuario = :pass WHERE num_usuario = :id");
@@ -86,10 +83,11 @@ class ConsultasUsuario extends ConexionDb{
         }else{
             echo"No se pudo hacer la Actualizacion";
         }
-     }
-     public function deleteUser($id, $table) {
-        $stmt = ConexionDb::Conex()->prepare("DELETE FROM USUARIO WHERE USUARIO.NUM_USUARIO = :id AND USUARIO.FK_TIPODOCUMENTOID_DOCUMENTO = 1");
-        $stmt->bindParam(':id',    $id,    PDO::PARAM_STR);
+    }
+    public function deleteUser($id, $tipdoc, $table) {
+        $stmt = ConexionDb::Conex()->prepare("DELETE * FROM $table WHERE num_usuario = :id AND fk_tipodocumentoid_documento = :tidoc");
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+        $stmt->bindParam(':tidoc', $tipdoc, PDO::PARAM_INT);
         if($stmt->execute()){
             echo "funciono eliminar";
         }
