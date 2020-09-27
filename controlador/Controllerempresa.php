@@ -34,3 +34,5 @@ public function loginEmpresaController($nom_empresa, $contraseña_empresa){
     $respuesta = Datos::loginEmpresaModel($datosController, "empresas");
     return $respuesta;
 }
+
+?>
