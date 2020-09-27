@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Crear cuenta</title>
+    <link rel="stylesheet" href="Login-form/css/prueba.css">
 </head>
 <body>
     <div class="container">
         <div class="all">
             <div class="logocrear">
                 <div class="dos2">
-                    <img src="css/logo.png" alt="logo">
-                </div>
+                    <img class="avatar"src="Login-form/img/logo.png" alt="logo">
+                
                 <div class="uno1">
                     <h1>Crear Cuenta</h1>
+                
                 </div>
-               
                 
             </div>
             <div class="formulariousu">
@@ -30,7 +31,7 @@
                 </nav>
                     <nav class="nombres">
                     <input type="number" name="identi" id="identi" placeholder="Numero de Identificacion" maxlength="11" required oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">     
-                    <select name="tipodoc" id="tipodoc" required>
+                    <select class="select"name="tipodoc" id="tipodoc" required>
                         <option value="">Tipo De Identificacion</option>
                         <option value="1">TI - Tarjeta de Identidad</option>
                         <option value="2">CC - Cedula de Ciudadania</option>
@@ -51,7 +52,7 @@
                         <input type="password" name="pass2" id="pass2" placeholder="Repetir Contraseña" minlength="5" maxlength="30" required>
                     </nav>
                     <!--<input type="submit" name="guardar" value="Aceptar">-->
-                    <button id="enviar" type="button" onclick="guardar()">Enviar</button>
+                    <input type="button"  name="enviar"  value="Aceptar">
                 </form>
             </div>
         </div>

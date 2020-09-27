@@ -7,9 +7,9 @@ body {
     height: 100vh;
 }
 
-.login-box{
+.container{
     width: 320px;
-    height: 450px;
+    height: 470px;
     background: #000;
     color: #fff;
     top: 50%;
@@ -20,7 +20,7 @@ body {
     padding: 70px 30px;
 }
 
-.login-box .avatar{
+.container .avatar{
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -28,37 +28,38 @@ body {
     top: -50px;
     left: calc(50% - 50px);
 }
-.login-box h1{
-margin: 0;
+
+.container .uno1{
+    margin: 0;
 padding: 0 0 20px;
 text-align: center;
-font-size: 22px;
+font-size: 11px;
 }
-.login-box label{
+
+.container input{
+    width: 100%;
+    margin-bottom: 20%;
     margin: 0;
     padding: 0;
     font-weight: bold;
     display: block;
+
 }
 
-.login-box input{
-    width: 100%;
-    margin-bottom: 20%;
-}
-
-.login-box input[type="text"],
-.login-box input[type="password"]{
+.container input[type="text"],
+.container input[type="number"],
+.container .select,
+.container input[type="email"],
+.container input[type="password"]{
     border: none;
     border-bottom:  1px solid #fff;
     background: transparent;
     outline: none;
     height: 20px;
     color: #fff;
-    font-size:16px;
-
+    font-size:13px;
 }
-
-.login-box input[type="submit"] {
+.container input[type="button"] {
     border: none;
     outline: none;
     height: 40px;
@@ -66,15 +67,5 @@ font-size: 22px;
     color: #fff;
     font-size: 18px;
     border-radius: 20px;
-}
-
-.login-box a{
-    text-decoration: none;
-    font-size: 12px;
-    Line-height: 20px;
-    color: darkgrey;
-}
-
-.login-box a:hover{
-    color: #fff;
+    
 }
