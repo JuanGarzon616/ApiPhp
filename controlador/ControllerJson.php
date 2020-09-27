@@ -54,7 +54,8 @@ class ControllerUser{
     }
 
     public function updateUserController(){
-        $datosController = array("num_usuario"=>$_GET['id'], "contraseña_usuario"=>$_GET['pass']);
+        $datosController = array("num_usuario" => $_GET['id'], "contraseña_usuario"=> $this->hashPass($_GET["pass"]));
+        //var_dump($_GET);
         $respuesta3 = ConsultasUsuario::updateUsuarioModel($datosController, "usuario");
         return $respuesta3;
     }
