@@ -81,7 +81,7 @@ class ConsultasPqr extends ConexionDb{
         }
     }
 
-    public Function deletetePqrModel ($Id_pqr, $tabla){
+    public Function deletePqrModel ($Id_pqr, $tabla){
         $stmt =  ConexionDb::Conex()->prepare("DELETE FROM $tabla WHERE Id_pqr = :Id_pqr");
         $stmt->bindParam (":Id_pqr", $Id_pqr,  PDO::PARAM_INT);
         if($stmt->execute()){
