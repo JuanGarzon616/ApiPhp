@@ -22,7 +22,7 @@ elseif($_SERVER['REQUEST_METHOD']=='GET'){
             $_GET = json_decode($obtener, true);
                 
             $getUser = new ControllerUser();
-            $qwe = $getUser->readUsuariosController();
+            $qwe = $getUser->loginUsuarioController();
             if($obtener ===''){
                 echo json_encode("llego vacio");
             }else{

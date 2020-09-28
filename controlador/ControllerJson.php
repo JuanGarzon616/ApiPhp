@@ -61,13 +61,15 @@ class ControllerUser{
     }
 
     public function deleteUsuarioController(){
-        $respuesta4 = ConsultasUsuario::deleteUsuarioModel($id, "usuario");
+        $respuesta4 = ConsultasUsuario::deleteUser($_GET['id'], $_GET['tipodoc'], "usuario");
         return $respuesta4;
     }
 
     public function loginUsuarioController(){
-        $datosController = array("correo_usuario" => $mail, "contraseña_usuario"=>$pass);
-        $respuesta5 = ConsultasUsuario::loginUsuarioModel($datosController, "usuario");
+        $mail = $_GET['mail'];
+        $pasw = $_GET['pass'];
+        //$datosController = array("correo_usuario" => $_GET['mail'], "pss"=>$_GET['pass']);
+        $respuesta5 = ConsultasUsuario::loginUsuarioModel($mail, $pasw, "usuario");
         return $respuesta5;
     }
 }
