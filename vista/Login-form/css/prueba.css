@@ -48,7 +48,7 @@ font-size: 11px;
 
 .container input[type="text"],
 .container input[type="number"],
-.container .select,
+.container select,
 .container input[type="email"],
 .container input[type="password"]{
     border: none;
@@ -58,8 +58,9 @@ font-size: 11px;
     height: 20px;
     color: #fff;
     font-size:13px;
+    /*padding: 10px;*/
 }
-.container input[type="button"] {
+.container input[type="submit"] {
     border: none;
     outline: none;
     height: 40px;

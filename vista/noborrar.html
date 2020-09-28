@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear cuenta</title>
-    <link rel="stylesheet" href="Login-form/css/prueba.css">
 </head>
 <body>
     <div class="container">
@@ -31,7 +30,7 @@
                 </nav>
                     <nav class="nombres">
                     <input type="number" name="identi" id="identi" placeholder="Numero de Identificacion" maxlength="11" required oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">     
-                    <select class="select" name="tipodoc" id="tipodoc" required>
+                    <select class="select"name="tipodoc" id="tipodoc" required>
                         <option value="">Tipo De Identificacion</option>
                         <option value="1">TI - Tarjeta de Identidad</option>
                         <option value="2">CC - Cedula de Ciudadania</option>
@@ -52,7 +51,8 @@
                         <input type="password" name="pass2" id="pass2" placeholder="Repetir Contraseña" minlength="5" maxlength="30" required>
                     </nav>
                     <!--<input type="submit" name="guardar" value="Aceptar">-->
-                    <input type="submit"  name="enviar"  onclick="guardar()" value="Aceptar">
+                    <!--<input type="button"  name="enviar"  value="Aceptar">-->
+                    <button onclick="guardar()">guardar</button>
                 </form>
             </div>
         </div>
