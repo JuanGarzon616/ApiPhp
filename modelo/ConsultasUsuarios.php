@@ -103,20 +103,21 @@ class ConsultasUsuario extends ConexionDb{
          $stmt->bindParam(":mail", $datosModel[":mail"]);
          $stmt->bindParam(":pass", $datosModel[":pass"]);
 
-         $stmt->bindParam('num_usuario', $num_usuario);
-         $stmt->bindParam('nombre_usuario',  $nombre_usuario);
-         $stmt->bindParam('segnom_usuario',  $segnom_usuario);
-         $stmt->bindParam('primer_apellido',  $primer_apellido);
-         $stmt->bindParam('segundo_apellido',  $segundo_apellido);
-         $stmt->bindParam('direccion_usuario',  $direccion_usuario);
-         $stmt->bindParam('telefono_usuario',  $telefono_usuario);
-         $stmt->bindParam('segtelefono_usuario',  $segtelefono_usuario);
-         $stmt->bindParam('correo_usuario',  $correo_usuario);
-         $stmt->bindParam('contraseña_usuario',  $contraseña_usuario);
-         $stmt->bindParam('img_usuario',  $img_usuario);
-         $stmt->bindParam('fk_rolid_rol',  $fk_rolid_rol);
-         $stmt->bindParam('fk_tipodocumentoid_documento',  $fk_tipodocumentoid_documento);
-         $stmt->bindParam("created", $created);
+         $stmt->execute();
+
+         $stmt->bindColumn('num_usuario', $num_usuario);
+         $stmt->bindColumn('nombre_usuario',  $nombre_usuario);
+         $stmt->bindColumn('segnom_usuario',  $segnom_usuario);
+         $stmt->bindColumn('primer_apellido',  $primer_apellido);
+         $stmt->bindColumn('segundo_apellido',  $segundo_apellido);
+         $stmt->bindColumn('direccion_usuario',  $direccion_usuario);
+         $stmt->bindColumn('telefono_usuario',  $telefono_usuario);
+         $stmt->bindColumn('segtelefono_usuario',  $segtelefono_usuario);
+         $stmt->bindColumn('correo_usuario',  $correo_usuario);
+         $stmt->bindColumn('contraseña_usuario',  $contraseña_usuario);
+         $stmt->bindColumn('img_usuario',  $img_usuario);
+         $stmt->bindColumn('fk_rolid_rol',  $fk_rolid_rol);
+         $stmt->bindColumn('fk_tipodocumentoid_documento',  $fk_tipodocumentoid_documento);
 
          while ($fila = $stmt->fetch(PDO::FETCH_BOUND)){
 
@@ -132,7 +133,6 @@ class ConsultasUsuario extends ConexionDb{
             $user["contraseña_usuario"] = utf8_encode($contraseña_usuario);
             $user["img_usuario"] = utf8_encode($img_usuario);
             $user["fk_rolid_rol"] = utf8_encode($fk_rolid_rol);
-            $user["created"] = utf8_encode($created);
 
          }
          if(!empty($user)){

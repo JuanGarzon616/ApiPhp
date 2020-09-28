@@ -65,7 +65,7 @@ class ControllerUser{
         return $respuesta4;
     }
 
-    public function loginUsuarioController($mail, $pass){
+    public function loginUsuarioController(){
         $datosController = array("correo_usuario" => $mail, "contraseña_usuario"=>$pass);
         $respuesta5 = ConsultasUsuario::loginUsuarioModel($datosController, "usuario");
         return $respuesta5;
