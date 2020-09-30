@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: application/json');
+
 require_once 'ControllerJson.php';
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
