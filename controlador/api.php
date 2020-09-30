@@ -10,23 +10,24 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     if($codificado ===''){
         echo json_encode("llego vacio");
     }else{
-        echo json_encode("si llego esa vaina");
+        json_encode("si llego esa vaina");
         echo $codificado;
     }
 }
 elseif($_SERVER['REQUEST_METHOD']=='GET'){
+
     switch($_GET['apicall']){
         case 'inicio_usuario':
             $obtener = file_get_contents("php://input");  
             $_GET = json_decode($obtener, true);
                 
             $getUser = new ControllerUser();
-            $ = $getUser->readUsuariosController();
+            $qwe = $getUser->loginUsuarioController();
             if($obtener ===''){
                 echo json_encode("llego vacio");
             }else{
                 echo json_encode("si llego esa vaina");
-                echo json_encode($Result);
+                echo json_encode($qwe);
             }
         break;
         case 'usuario':
@@ -41,7 +42,7 @@ elseif($_SERVER['REQUEST_METHOD']=='GET'){
                 echo json_encode("si llego esa vaina");
                 echo json_encode($Result);
             }
-        break;
+       break;
     }
 
 }elseif($_SERVER['REQUEST_METHOD']=='PUT'){

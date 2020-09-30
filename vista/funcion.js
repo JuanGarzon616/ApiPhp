@@ -24,8 +24,8 @@ function guardar(){
         method: 'POST',
         body: JSON.stringify( listarDatos() ),
         headers: {
-            "Content-type": "application/json",
-            "Accept": "application/json"
+            "Content-type": "application/json"
+            //"Accept": "application/json"
         }
     }).then(res => res.text())
     .then(data => console.log(data));
