@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type: application/json');
 require("../modelo/ConsultasUsuarios.php");
 
 class ControllerUser{

@@ -27,7 +27,7 @@ function guardar(){
             "Content-type": "application/json"
             //"Accept": "application/json"
         }
-    }).then(res => res.json())
+    }).then(res => res.text())
     .then(data => console.log(data));
 }
 

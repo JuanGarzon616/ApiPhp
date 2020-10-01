@@ -12,8 +12,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     if($codificado ===''){
         echo json_encode("llego vacio");
     }else{
-        json_encode("si llego esa vaina");
-        echo $codificado;
+        echo json_encode("si llego esa vaina");
+        //echo $codificado;
     }
 }
 elseif($_SERVER['REQUEST_METHOD']=='GET'){

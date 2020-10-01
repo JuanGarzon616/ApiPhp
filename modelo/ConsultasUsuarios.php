@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type: application/json');
 require("Conexion.php");
 
 class ConsultasUsuario extends ConexionDb{
