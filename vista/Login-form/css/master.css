@@ -58,7 +58,7 @@ font-size: 22px;
 
 }
 
-.login-box input[type="submit"] {
+.login-box input[type="button"] {
     border: none;
     outline: none;
     height: 40px;

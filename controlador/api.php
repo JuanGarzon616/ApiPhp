@@ -4,60 +4,54 @@ header('Content-Type: application/json');
 require_once 'ControllerJson.php';
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-    $codificado = file_get_contents("php://input");  
+    $codificado = file_get_contents("php://input"); 
     $_POST = json_decode($codificado, true);
-    
     $newUser = new ControllerUser();
     $Result = $newUser->createUserController();
-    if($codificado ===''){
-        echo json_encode("llego vacio");
+    if($_POST ===''){
+        $Message = array("Response"=>"Usuario No se Registro.");
+        echo json_encode($Message);
     }else{
-        echo json_encode("si llego esa vaina");
-        //echo $codificado;
+        $Message = array("Response"=>"Usuario Registrado.");
+        echo json_encode($Message);
+        echo json_encode($Result);
     }
 }
+
+
 elseif($_SERVER['REQUEST_METHOD']=='GET'){
-
-    switch($_GET['apicall']){
-        case 'inicio_usuario':
-            $obtener = file_get_contents("php://input");  
-            $_GET = json_decode($obtener, true);
-                
-            $getUser = new ControllerUser();
-            $qwe = $getUser->loginUsuarioController();
-            if($obtener ===''){
-                echo json_encode("llego vacio");
-            }else{
-                echo json_encode("si llego esa vaina");
-                echo json_encode($qwe);
-            }
-        break;
-        case 'usuario':
-            $obtener = file_get_contents("php://input");  
-            $_GET = json_decode($obtener, true);
-                
-            $getUser = new ControllerUser();
-            $Result = $getUser->readUsuariosController();
-            if($obtener ===''){
-                echo json_encode("llego vacio");
-            }else{
-                echo json_encode("si llego esa vaina");
-                echo json_encode($Result);
-            }
-       break;
+    $obtener = file_get_contents("php://input");  
+    $_GET = json_decode($obtener, true);
+            
+    $getUser = new ControllerUser();
+    $Result = $getUser->readUsuariosController();
+    if($_GET ===''){
+        $Message = array("Response"=>"Usuario No Registrado.");
+        echo json_encode($Message);
+    }else{
+        $Message = array("Response"=>"Usuario Registrado.");
+        echo json_encode($Message);
+        echo json_encode($Result);
     }
+}
 
-}elseif($_SERVER['REQUEST_METHOD']=='PUT'){
+
+elseif($_SERVER['REQUEST_METHOD']=='PUT'){
     $_GET = json_decode(file_get_contents("php://input"), true);
-    //var_dump($loquesea);
     $putUser = new ControllerUser();
     $Result = $putUser->updateUserController();
     if($_GET ===''){
-        echo json_encode("llego vacio");
+        $Message = array("Response"=>"Usuario No Actualizado.");
+        echo json_encode($Message);
     }else{
-        echo json_encode("Se actualizo");
+        $Message = array("Response"=>"Usuario Actualizado.");
+        echo json_encode($Message);
+        echo json_encode($Result);
     }
-}elseif($_SERVER['REQUEST_METHOD']=='DELETE'){
+}
+
+
+elseif($_SERVER['REQUEST_METHOD']=='DELETE'){
     $obtener = file_get_contents("php://input");  
     $_GET = json_decode($obtener, true);
         

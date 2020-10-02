@@ -26,10 +26,12 @@ class ConsultasUsuario extends ConexionDb{
         $stmt->bindParam(':tipid', $DatoUser->tipId, PDO::PARAM_INT);
         var_dump($DatoUser);
         if($stmt->execute()){
-            echo "funciono";
+            $consulta = array("query"=>false);
+            return $consulta;
         }
         else{
-            echo "no funciono";
+            $consulta = array("query"=>false);
+            return $consulta;
         }
     }
 
@@ -40,38 +42,43 @@ class ConsultasUsuario extends ConexionDb{
         telefono_usuario,correo_usuario, contraseña_usuario, fk_rolid_rol, fk_tipodocumentoid_documento FROM $Table where num_usuario = :id AND fk_tipodocumentoid_documento = :tipDoc");
         $stmt->bindParam(':id',     $id,    PDO::PARAM_STR);
         $stmt->bindParam(':tipDoc', $tidoc, PDO::PARAM_STR);
-        $stmt->execute();
+            if($stmt->execute()){
+            $stmt->bindColumn("num_usuario", $num_usuario);
+            $stmt->bindColumn("nombre_usuario", $nombre_usuario);
+            $stmt->bindColumn("segnom_usuario", $segnom_usuario);
+            $stmt->bindColumn("primer_apellido", $primer_apellido);
+            $stmt->bindColumn("segundo_apellido", $segundo_apellido);
+            $stmt->bindColumn("telefono_usuario", $telefono_usuario);
+            $stmt->bindColumn("correo_usuario", $correo_usuario);
+            $stmt->bindColumn("contraseña_usuario", $contraseña_usuario);
+            $stmt->bindColumn("fk_rolid_rol", $rol);
+            $stmt->bindColumn("fk_tipodocumentoid_documento", $id_tip);
+            $usuarios = array();
 
-        $stmt->bindColumn("num_usuario", $num_usuario);
-        $stmt->bindColumn("nombre_usuario", $nombre_usuario);
-        $stmt->bindColumn("segnom_usuario", $segnom_usuario);
-        $stmt->bindColumn("primer_apellido", $primer_apellido);
-        $stmt->bindColumn("segundo_apellido", $segundo_apellido);
-        $stmt->bindColumn("telefono_usuario", $telefono_usuario);
-        $stmt->bindColumn("correo_usuario", $correo_usuario);
-        $stmt->bindColumn("contraseña_usuario", $contraseña_usuario);
-        $stmt->bindColumn("fk_rolid_rol", $rol);
-        $stmt->bindColumn("fk_tipodocumentoid_documento", $id_tip);
-        $usuarios = array();
+            while ($fila = $stmt->fetch(PDO::FETCH_BOUND)){
+                
+                $user = array();
+                
+                $user["num_usuario"] = utf8_encode($num_usuario);
+                $user["nombre_usuario"] = utf8_encode($nombre_usuario);
+                $user["segnom_usuario"] = utf8_encode($segnom_usuario);
+                $user["primer_apellido"] = utf8_encode($primer_apellido);
+                $user["segundo_apellido"] = utf8_encode($segundo_apellido);
+                $user["telefono_usuario"] = utf8_encode($telefono_usuario);
+                $user["correo_usuario"] = utf8_encode($correo_usuario);
+                $user["contraseña_usuario"] = utf8_encode($contraseña_usuario);
+                $user["fk_rolid_rol"] = utf8_encode($rol);
+                $user["fk_tipodocumentoid_documento"] = utf8_encode($id_tip);
 
-        while ($fila = $stmt->fetch(PDO::FETCH_BOUND)){
-            
-            $user = array();
-            
-            $user["num_usuario"] = utf8_encode($num_usuario);
-            $user["nombre_usuario"] = utf8_encode($nombre_usuario);
-            $user["segnom_usuario"] = utf8_encode($segnom_usuario);
-            $user["primer_apellido"] = utf8_encode($primer_apellido);
-            $user["segundo_apellido"] = utf8_encode($segundo_apellido);
-            $user["telefono_usuario"] = utf8_encode($telefono_usuario);
-            $user["correo_usuario"] = utf8_encode($correo_usuario);
-            $user["contraseña_usuario"] = utf8_encode($contraseña_usuario);
-            $user["fk_rolid_rol"] = utf8_encode($rol);
-            $user["fk_tipodocumentoid_documento"] = utf8_encode($id_tip);
-
-            array_push($usuarios, $user);
+                array_push($usuarios, $user);
+            }
+            return $usuarios;
         }
-        return $usuarios;
+        else{
+            $consulta = array("query"=>false);
+            return $consulta;
+        }
+
     }
 
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -82,9 +89,11 @@ class ConsultasUsuario extends ConexionDb{
         $stmt->bindParam(":pass", $datosModel["contraseña_usuario"], PDO::PARAM_STR);
         $stmt->bindParam(":id", $datosModel["num_usuario"], PDO::PARAM_INT);
         if($stmt->execute()){
-            echo "Actualizacion Exitosa";
+            $consulta = array("query"=>true);
+            return $consulta;
         }else{
-            echo"No se pudo hacer la Actualizacion";
+            $consulta = array("query"=>false);
+            return $consulta;
         }
     }
 
@@ -95,10 +104,12 @@ class ConsultasUsuario extends ConexionDb{
         $stmt->bindParam(':id', $id, PDO::PARAM_STR);
         $stmt->bindParam(':tidoc', $tipdoc, PDO::PARAM_INT);
         if($stmt->execute()){
-            echo "funciono eliminar";
+            $consulta = array("query"=>true);
+            return $consulta;
         }
         else{
-            echo "No funciono eliminar";
+            $consulta = array("query"=>false);
+            return $consulta;
         }
     }
 
@@ -145,16 +156,19 @@ class ConsultasUsuario extends ConexionDb{
                 $user["contraseña_usuario"] = utf8_encode($contraseña_usuario);
                 $user["img_usuario"] = utf8_encode($img_usuario);
                 $user["fk_rolid_rol"] = utf8_encode($fk_rolid_rol);
+                $user["fk_tipodocumentoid_documento"] = utf8_encode($fk_tipodocumentoid_documento);
 
             }
             if(!empty($user)){
                 return $user;
             }else{
-                return false;
+                $consulta = array("query"=>false);
+                return $consulta;
             }   
         }
         else {
-            return false;
+            $consulta = array("query"=>false);
+            return $consulta;
         }
     }
 

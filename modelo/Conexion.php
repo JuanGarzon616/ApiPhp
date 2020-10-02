@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 class ConexionDb{
     public function Conex(){
         try{
