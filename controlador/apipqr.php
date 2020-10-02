@@ -32,7 +32,7 @@ elseif($_SERVER['REQUEST_METHOD']=='GET'){
     else{
         $Message = array(
             "Response"=>"Pqr Registrado.",
-            "Usuario"=>$Result
+            "PQR's"=>$Result
         );
         echo json_encode($Message);
     }

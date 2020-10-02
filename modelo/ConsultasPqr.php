@@ -28,21 +28,22 @@ class ConsultasPqr extends ConexionDb{
     }
 
     public function readPqrmodel($datosModel, $tabla){
-        $stmt = ConexionDb::Conex()->prepare("SELECT Id_pqr, asunto_pqr, descripcion_pqr, fecha_pqr, estado_pqr, fk_tipo_pqrid_tipqr, fk_empresaid_empresa,
-        fk_usuario_num_usuario, fk_empresanit_empresa, fk_usuariotipo_documentopid_documento, respuesta_pqr FROM $tabla WHERE fk_usuario_num_usuario = :numUser AND fk_usuariotipo_documentopid_documento = :tipUser");
-        $stmt->bindParam(":numUser", $datosModel[''], PDO::PARAM_STR);
+        $stmt = ConexionDb::Conex()->prepare("SELECT Id_pqr, asunto_pqr, descripcion_prq, fecha_pqr, estado_pqr, fk_tipo_pqrid_tipqr, fk_empresaid_empresa,
+        fk_usuario_num_usuario, fk_empresanit_empresa, fk_usuariotipo_documentoid_documento, respuesta_pqr FROM $tabla WHERE fk_usuario_num_usuario = :numUser AND fk_usuariotipo_documentoid_documento = :tipUser");
+        $stmt->bindParam(":numUser", $datosModel['num'], PDO::PARAM_INT);
+        $stmt->bindParam(":tipUser", $datosModel['tipdoc'], PDO::PARAM_INT);
         $stmt->execute();
 
         $stmt->bindColumn("Id_pqr", $Id_pqr);
         $stmt->bindColumn("asunto_pqr", $asunto_pqr);
-        $stmt->bindColumn("descripcion_pqr", $descripcion_pqr);
+        $stmt->bindColumn("descripcion_prq", $descripcion_pqr);
         $stmt->bindColumn("fecha_pqr", $fecha_pqr);
         $stmt->bindColumn("estado_pqr", $estado_pqr);
         $stmt->bindColumn("fk_tipo_pqrid_tipqr", $fk_tipo_pqrid_tipqr);
         $stmt->bindColumn("fk_empresaid_empresa", $fk_empresaid_empresa);
         $stmt->bindColumn("fk_usuario_num_usuario", $fk_usuario_num_usuario);
         $stmt->bindColumn("fk_empresanit_empresa", $fk_empresanit_empresa);
-        $stmt->bindColumn("fk_usuariotipo_documentopid_documento", $fk_usuariotipo_documentopid_documento);
+        $stmt->bindColumn("fk_usuariotipo_documentoid_documento", $fk_usuariotipo_documentopid_documento);
         $stmt->bindColumn("respuesta_pqr", $respuesta_pqr);
         $Pqrs = array();
 
@@ -69,9 +70,16 @@ class ConsultasPqr extends ConexionDb{
     }
 
     public Function updatePqrModel ($datosModel, $tabla){
-        $stmt = ConexionDb::Conex()->prepare("UPDATE $tabla set estado_pqr = :estado_pqr WHERE Id_pqr = :Id_pqr"); 
+        if(!empty($datosModel['estado'])){
+            $stmt = ConexionDb::Conex()->prepare("UPDATE $tabla set estado_pqr = :estado WHERE Id_pqr = :Id_pqr");
+            $stmt->bindParam (":estado", $datosModel["estado_pqr"], PDO::PARAM_STR);
 
-        $stmt->bindParam (":estado_pqr", $datosModel["estado_pqr"], PDO::PARAM_STR);
+        }
+        if(!empty($datosModel[''])){
+
+        }
+
+
         $stmt->bindParam (":Id_pqr", $DatosModel["Id_pqr"], PDO::PARAM_STR); 
         if($stmt->execute()){
             echo " Actualizacion Exitosa";

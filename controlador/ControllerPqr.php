@@ -31,7 +31,8 @@ class ControllerPqr{
 
 
     public function readPqrController(){
-        $respuesta = ConsultasPqr::readPqrModel("pqr");
+        $datos = array("num" => $_GET['numuser'], "tipdoc" => $_GET['tipdoc']);
+        $respuesta = ConsultasPqr::readPqrModel($datos,"pqr");
         return $respuesta;
     }
 
