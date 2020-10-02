@@ -67,6 +67,9 @@ font-size: 22px;
     font-size: 18px;
     border-radius: 20px;
 }
+.login-box input[type="button"]:hover {
+    background: #7d92a8;
+}
 
 .login-box a{
     text-decoration: none;
