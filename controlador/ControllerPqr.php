@@ -1,21 +1,25 @@
 <?php
 header('Content-Type: application/json');
 require('../modelo/ConsultasPqr.php');
-/**
- * 
- */
+
 class ControllerPqr{
     public $asunto;
     public $descripcion;
     public $tipPqr;
     public $idEmpresa;
     public $numUser;
-    public $tipNumuser;
+    public $tipNumUser;
     public $nitEmpresa;
 
     public function __construct(){
         if(!empty($_POST['asunto'])){
-            $this->id = 
+            $this->asunto      = $_POST['asunto'];
+            $this->descripcion = $_POST['descripcion'];
+            $this->tipPqr      = $_POST['tipqr'];
+            $this->idEmpresa   = $_POST['idempresa'];
+            $this->numUser     = $_POST['numuser'];
+            $this->tipNumUser  = $_POST['tipdoc'];
+            $this->nitEmpresa  = $_POST['nitempresa'];
         }
     }
 
@@ -27,7 +31,7 @@ class ControllerPqr{
 
 
     public function readPqrController(){
-        $respuesta = ConsultasPqr::readPqrmodel("pqr");
+        $respuesta = ConsultasPqr::readPqrModel("pqr");
         return $respuesta;
     }
 
