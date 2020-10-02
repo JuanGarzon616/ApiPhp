@@ -2,6 +2,7 @@
 header('Content-Type: application/json');
 
 require_once 'ControllerJson.php';
+//include 'ControllerPqr.php';
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
     $codificado = file_get_contents("php://input"); 
@@ -12,9 +13,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $Message = array("Response"=>"Usuario No se Registro.");
         echo json_encode($Message);
     }else{
-        $Message = array("Response"=>"Usuario Registrado.");
+        $Message = array(
+            "Response"=>"Usuario Registrado.",
+            "usuario"=>$Result
+        );
         echo json_encode($Message);
-        echo json_encode($Result);
     }
 }
 
@@ -22,16 +25,19 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 elseif($_SERVER['REQUEST_METHOD']=='GET'){
     $obtener = file_get_contents("php://input");  
     $_GET = json_decode($obtener, true);
-            
+                
     $getUser = new ControllerUser();
     $Result = $getUser->readUsuariosController();
     if($_GET ===''){
         $Message = array("Response"=>"Usuario No Registrado.");
         echo json_encode($Message);
-    }else{
-        $Message = array("Response"=>"Usuario Registrado.");
+        }
+    else{
+        $Message = array(
+            "Response"=>"Usuario Registrado.",
+            "Usuario"=>$Result
+        );
         echo json_encode($Message);
-        echo json_encode($Result);
     }
 }
 
@@ -44,9 +50,11 @@ elseif($_SERVER['REQUEST_METHOD']=='PUT'){
         $Message = array("Response"=>"Usuario No Actualizado.");
         echo json_encode($Message);
     }else{
-        $Message = array("Response"=>"Usuario Actualizado.");
+        $Message = array(
+            "Response"=>"Usuario Actualizado.",
+            "usuario"=>$Result
+        );
         echo json_encode($Message);
-        echo json_encode($Result);
     }
 }
 
@@ -58,9 +66,14 @@ elseif($_SERVER['REQUEST_METHOD']=='DELETE'){
     $delUser = new ControllerUser();
     $Result = $delUser->deleteUsuarioController();
     if($obtener ===''){
-        echo json_encode("llego vacio");
+        $Message = array("Response"=>"Usuario No Eliminado.");
+        echo json_encode($Message);
     }else{
-        echo json_encode("Se actualizo");
+        $Message = array(
+            "Response"=>"Usuario Eliminado.",
+            "Usuario"=>$Result
+        );
+        echo json_encode($Message);
     } 
 }
 

@@ -31,7 +31,8 @@ class ConsultasPqr extends ConexionDb{
 
     public function readPqrmodel($datosModel, $tabla){
         $stmt = ConexionDb::Conex()->prepare("SELECT Id_pqr, asunto_pqr, descripcion_pqr, fecha_pqr, estado_pqr, fk_tipo_pqrid_tipqr, fk_empresaid_empresa,
-        fk_usuario_num_usuario, fk_empresanit_empresa, fk_usuariotipo_documentopid_documento, respuesta_pqr, created FROM $Table");
+        fk_usuario_num_usuario, fk_empresanit_empresa, fk_usuariotipo_documentopid_documento, respuesta_pqr FROM $tabla WHERE fk_usuario_num_usuario = :numUser AND fk_usuariotipo_documentopid_documento = :tipUser");
+        $stmt->bindParam(":numUser", $datosModel[''], PDO::PARAM_STR);
         $stmt->execute();
 
         $stmt->bindColumn("Id_pqr", $Id_pqr);

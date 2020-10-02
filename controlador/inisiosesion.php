@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD']='POST'){
         
     $getUser = new ControllerUser();
     $qwe = $getUser->loginUsuarioController();
-    if($qwe ===''){
+    if($_GET ===''){
         $Message = array(
             "Response" => "Peticion No Aceptada."
         );
