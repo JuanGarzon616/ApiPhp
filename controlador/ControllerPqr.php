@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 header('Content-Type: application/json');
 require('../modelo/ConsultasPqr.php');
 
@@ -36,14 +37,15 @@ class ControllerPqr{
         return $respuesta;
     }
 
-    public function updatePqrController($Id_pqr, $estado_pqr){
-        $datosController = array("Id_pqr" => $Id_pqr, "estado_pqr" => $estado_pqr);
+    public function updatePqrController(){
+        $datosController = array("id_pqr" => $_GET['idpqr'], "estado" => $_GET['estado'], "respuesta" => $_GET['respuestacion']);
         $respuesta = ConsultasPqr::updatePqrModel($datosController, "pqr");
         return $respuesta;
     }
 
-    public function deletePqrController($Id_pqr){
-        $respuesta = ConsultasPqr::deletePqrModel($Id_pqr, "pqr");
+    public function deletePqrController(){
+        $datosController = array("idpqr" => $_GET['idpqr']);
+        $respuesta = ConsultasPqr::deletePqrModel($datosController, "pqr");
         return $respuesta;
     }
 

@@ -41,15 +41,15 @@ elseif($_SERVER['REQUEST_METHOD']=='GET'){
 
 elseif($_SERVER['REQUEST_METHOD']=='PUT'){
     $_GET = json_decode(file_get_contents("php://input"), true);
-    $putUser = new ControllerUser();
-    $Result = $putUser->updateUserController();
+    $putUser = new ControllerPqr();
+    $Result = $putUser->updatePqrController();
     if($_GET ===''){
         $Message = array("Response"=>"Usuario No Actualizado.");
         echo json_encode($Message);
     }else{
         $Message = array(
-            "Response"=>"Usuario Actualizado.",
-            "usuario"=>$Result
+            "Response"=>"PQR Actualizado.",
+            "PQR's"=>$Result
         );
         echo json_encode($Message);
     }
@@ -60,15 +60,15 @@ elseif($_SERVER['REQUEST_METHOD']=='DELETE'){
     $obtener = file_get_contents("php://input");  
     $_GET = json_decode($obtener, true);
         
-    $delUser = new ControllerUser();
-    $Result = $delUser->deleteUsuarioController();
+    $delPqr = new ControllerPqr();
+    $Result = $delPqr->deletePqrController();
     if($obtener ===''){
         $Message = array("Response"=>"Usuario No Eliminado.");
         echo json_encode($Message);
     }else{
         $Message = array(
-            "Response"=>"Usuario Eliminado.",
-            "Usuario"=>$Result
+            "Response"=>"PQR Eliminado.",
+            "PQR"=>$Result
         );
         echo json_encode($Message);
     } 

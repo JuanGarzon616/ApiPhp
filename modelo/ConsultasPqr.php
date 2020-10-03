@@ -69,32 +69,44 @@ class ConsultasPqr extends ConexionDb{
     return $Pqrs;
     }
 
-    public Function updatePqrModel ($datosModel, $tabla){
-        if(!empty($datosModel['estado'])){
-            $stmt = ConexionDb::Conex()->prepare("UPDATE $tabla set estado_pqr = :estado WHERE Id_pqr = :Id_pqr");
-            $stmt->bindParam (":estado", $datosModel["estado_pqr"], PDO::PARAM_STR);
-
+    public Function updatePqrModel ($datosUpdate, $tabla){
+        if(!empty($datosUpdate['estado'])){
+            $stmt = ConexionDb::Conex()->prepare("UPDATE $tabla SET estado_pqr = :estado WHERE id_pqr = :Id_pqr");
+            $stmt->bindParam (":estado", $datosUpdate["estado"], PDO::PARAM_STR);
+            $stmt->bindParam (":Id_pqr", $datosUpdate["id_pqr"], PDO::PARAM_INT); 
+            if($stmt->execute()){
+                $consulta = array("query"=>true);
+                return $consulta;
+            }else{
+                $consulta = array("query"=>false);
+                return $consulta;
+            }
         }
-        if(!empty($datosModel[''])){
-
-        }
-
-
-        $stmt->bindParam (":Id_pqr", $DatosModel["Id_pqr"], PDO::PARAM_STR); 
-        if($stmt->execute()){
-            echo " Actualizacion Exitosa";
-        }else{
-            echo "No se pudo hacer la Actualizacion";
+        
+        if(!empty($datosUpdate['respuesta'])){
+            $stmt = ConexionDb::Conex()->prepare("UPDATE pqr SET respuesta_pqr = ? WHERE id_pqr = ?");
+            $stmt->bindParam (1, $datosUpdate["respuesta"], PDO::PARAM_STR);
+            //$stmt->bindParam (2, $datosUpdate["estado"], PDO::PARAM_STR);
+            $stmt->bindParam (2, $datosUpdate["id_pqr"], PDO::PARAM_STR); 
+            if($stmt->execute()){
+                $consulta = array("query"=>true);
+                return $consulta;
+            }else{
+                $consulta = array("query"=>false);
+                return $consulta;
+            }
         }
     }
 
-    public Function deletePqrModel ($Id_pqr, $tabla){
+    public Function deletePqrModel ($id, $tabla){
         $stmt =  ConexionDb::Conex()->prepare("DELETE FROM $tabla WHERE Id_pqr = :Id_pqr");
-        $stmt->bindParam (":Id_pqr", $Id_pqr,  PDO::PARAM_INT);
+        $stmt->bindParam (":Id_pqr", $id['idpqr'],  PDO::PARAM_INT);
         if($stmt->execute()){
-            echo "Pqr eliminada correctamente";
+            $consulta = array("query"=>true);
+            return $consulta;
         }else{
-            echo "La Pqr no se pudo eliminar";
+            $consulta = array("query"=>false);
+            return $consulta;
         }
     }
 }
