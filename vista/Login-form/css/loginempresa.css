@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: url(../img/fondo.png) no-repeat center top;
+    background: url(../img/fondo.jpg) no-repeat center top;
     background-size: cover;
     font-family: sans-serif;
     height: 100vh;
@@ -12,7 +12,7 @@ body {
     height: 460px;
     background: #000;
     color: #fff;
-    top: 50%;
+    top: 100%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);

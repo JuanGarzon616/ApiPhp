@@ -6,22 +6,28 @@
     <link rel="stylesheet" href="Login-form/css/master.css">
 </head>
 <body>
+    <nav class="arriba">
 
-    <div class="login-box">
-        <img class="avatar" src="Login-form/img/logo.png" alt="logo de Lawp">
-        <h1>Inicia Sesion</h1>
-        <form id="login">
-            <label for="correo">Correo</label>
-            <input type="text" id="mail" placeholder="Enter mail" required>
-            <label for="password">Contraseña</label>
-            <input type="password" id="pass" placeholder="Enter password" required>
-            <input type="button" onclick="registrar()" value="Iniciar Sesion">
+    </nav>
 
-        </form>
-        <a href="loginempresa.html">Iniciar Sesion Como Empresa</a><br>
-        <a href="olvidastecontraseña.html">¿Olvidaste tu contraseña?</a><br>
-        <a href="prueba.html">¿no tienes cuenta?</a>
-    </div>
+    <nav class="abajo">
+        <div class="login-box">
+            <img class="avatar" src="Login-form/img/logo.png" alt="logo de Lawp">
+            <h1>Inicia Sesion</h1>
+            <hr>
+            <form id="login">
+                <label for="correo">Correo</label>
+                <input type="text" id="mail" placeholder="Enter mail" required>
+                <label for="password">Contraseña</label>
+                <input type="password" id="pass" placeholder="Enter password" required>
+                <input type="button" onclick="registrar()" value="Iniciar Sesion">
+            </form>
+            <a href="loginempresa.html">Iniciar Sesion Como Empresa</a><br>
+            <a href="olvidastecontraseña.html">¿Olvidaste tu contraseña?</a><br>
+            <a href="prueba.html">¿no tienes cuenta?</a>
+        </div>        
+    </nav>
+
     <script src="asset/js/iniciousuario.js"></script>
 </body>
 </html>
