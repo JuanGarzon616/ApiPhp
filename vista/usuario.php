@@ -20,7 +20,8 @@
                     <img src="asset/imgusers/default.jpg" alt="imgUser">
                 </nav>
                 <nav class="nomb">
-                    <p>Juan Garzón</p>
+                    <h3>Juan Garzón</h3>
+                    <p>Usuario</p>
                 </nav>
             </div>
             <div class="tab">
@@ -32,7 +33,7 @@
         </div>
         <div class="dash">
             <div class="cabeza">
-                <h1><a href=""><i class="fas fa-sign-out-alt"></i></a></h1>
+                <h1><a href=""><i class="fas fa-sign-out-alt"></i> / Salir</a></h1>
             </div>
             <div class="masrelleno">
                 <h2><i class="fas fa-hand-sparkles"></i> Bienvenido</h2>
