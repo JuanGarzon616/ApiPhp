@@ -1,47 +1,116 @@
 body {
     margin: 0;
     padding: 0;
-    background: url(../img/fondo.png) no-repeat center top;
+    background: url(../img/fondo.jpeg) no-repeat center top;
     background-size: cover;
-    font-family: sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     height: 100vh;
 }
-.box1{
-    width: 220px;
-    height: 680px;
-    background: #000;
-    color: #fff;
-    top: 50%;
-    left: 8%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-    padding: 70px 30px;
+.user{
+    width: 100%;
+    display: flex;
 }
-.box1 .avatar{
-    width: 90px;
-    height: 90px;
+.login{
+    min-height: 100vh;
+    width: 16%;
+    background-color: #343a40;
+}
+.login .pqr{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 93, 93);
+}
+.login .pqr h1{
+   margin: 0; 
+}
+.login .data{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.login .data .imguser{
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.login .data .imguser img{
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    position: static;
-    top: -10px;
-    left: calc(50% - 50px);
 }
-.box1 a{
+.login .data .nomb{
+    width: 50%;
+    font-weight: bolder;
+    color: white;
+}
+.login .data .nomb p{
+    margin-left: 10px;
+}
+.login .tab{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.login .tab h3{
+    margin: 0%;
+    padding: 20px;
+}
+.login .tab h3:hover{
+    background-color: #252a2e;
+    border-left: 3px solid red;
+}
+.login .tab a{
     text-decoration: none;
-    position: static;
-    font-size: 12px;
-    Line-height: 20px;
-    color: darkgrey;
+    color: white;
 }
-
-.box1 a:hover{
-    color: #fff;
+.dash{
+    height: 100vh;
+    width: 84%;
+    background-color: rgba(255, 255, 255, 0.247);
 }
-.p{
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    position: static;
-    top: -10px;
-    left: calc(50% - 50px);
+.dash .cabeza{
+    height: 60px;
+    width: 100%;
+    background-color: tomato;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.dash .cabeza h1{
+    margin: 0%;
+    margin-right: 40px;
+}
+.dash .cabeza a{
+    color: black;
+}
+.dash .cabeza a:hover{
+    color: rgb(150, 150, 150);
+}
+.dash .masrelleno{
+    height: 100px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.dash .masrelleno h2{
+    margin: 0%;
+    margin-left: 40px;
+}
+.dash .masrelleno a{
+    text-decoration: none;
+    color: black;
+}
+.dash .masrelleno a:hover{
+    color: rgb(150, 150, 150);
+}
+.dash .masrelleno h3{
+    margin-right: 40px;
 }
