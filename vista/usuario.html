@@ -1,6 +1,3 @@
-<?php
-//echo $_COOKIE['firstName'];
-?>
 <html>
 <head>
     <meta charset="utf-8">
@@ -8,20 +5,22 @@
     <link rel="stylesheet" href="Login-form/css/usuario.css">
     <script src="https://kit.fontawesome.com/5be49774fe.js" crossorigin="anonymous"></script>
 </head>
-<body>
+
+<body onload="validacion()">
+
     <nav class="user">
         <div class="login">
             <div class="pqr">
                 <h1>PQR´s LAWP</h1>                
             </div>
-
+            
             <div class="data">
                 <nav class="imguser">
                     <img src="asset/imgusers/default.jpg" alt="imgUser">
                 </nav>
-                <nav class="nomb">
-                    <h3>Juan Garzón</h3>
-                    <p>Usuario</p>
+                <nav class="nomb" >
+                    <h3 id="nomb">Nombre Prueba</h3>
+                    <p>Rol</p>
                 </nav>
             </div>
             <div class="tab">
@@ -33,28 +32,18 @@
         </div>
         <div class="dash">
             <div class="cabeza">
-                <h1><a href=""><i class="fas fa-sign-out-alt"></i> / Salir</a></h1>
+                <h1><a href="http://localhost:8080/ProyectoLawpRemasterizado/ApiPhp/vista/"><i class="fas fa-sign-out-alt"></i> / Salir</a></h1>
             </div>
             <div class="masrelleno">
                 <h2><i class="fas fa-hand-sparkles"></i> Bienvenido</h2>
                 <h3><a href=""><i class="fas fa-home"> / Inicio</a></i></h3>
             </div>
             <div class="relleno">
-
+                
             </div>    
         </div>
     </nav>
-
-
-
-
-
-
-<!--
-    <div class="box1">
-        <img class="avatar" src="Login-form/img/logo.png" alt="logo de Lawp">
-        
-    </div>    
--->        
+    
+    <script src="asset/js/validacionusuario.js"></script>
 </body>
 </html>

@@ -4,21 +4,47 @@ header('Content-Type: application/json');
 require_once 'ControllerPqr.php';
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-    $codificado = file_get_contents("php://input"); 
-    $_POST = json_decode($codificado, true);
-    $newPqr = new ControllerPQR();
-    $Result = $newPqr->createPqrController();
-    if($_POST ===''){
-        $Message = array("Response"=>"PQR No se Registro.");
-        echo json_encode($Message);
-    }else{
-        $Message = array(
-            "Response"=>"PQR Registrado.",
-            "PQR"=>$Result
-        );
-        echo json_encode($Message);
+    if(isset($_GET['pqr'])){
+        switch($_GET['pqr']){
+            case 'i':
+                $codificado = file_get_contents("php://input"); 
+                $_POST = json_decode($codificado, true);
+                $newPqr = new ControllerPQR();
+                $Result = $newPqr->createPqrController();
+                if($_POST ===''){
+                    $Message = array("Response"=>"PQR No se Registro.");
+                    echo json_encode($Message);
+                }else{
+                    $Message = array(
+                        "Response"=>"PQR Registrado.",
+                        "PQR"=>$Result
+                    );
+                    echo json_encode($Message);
+                }                
+            break;
+            case 'l':
+                $obtener = file_get_contents("php://input");  
+                $_GET = json_decode($obtener, true);
+                            
+                $getPqr = new ControllerPQR();
+                $Result = $getPqr->readPqrController();
+                if($_GET ===''){
+                    $Message = array("Response"=>"Pqr No Registrado.");
+                    echo json_encode($Message);
+                    }
+                else{
+                    $Message = array(
+                        "Response"=>"Pqr Registrado.",
+                        "PQR's"=>$Result
+                    );
+                    echo json_encode($Message);
+                }     
+            break;
+        }
     }
+
 }
+/*
 elseif($_SERVER['REQUEST_METHOD']=='GET'){
     $obtener = file_get_contents("php://input");  
     $_GET = json_decode($obtener, true);
@@ -36,7 +62,7 @@ elseif($_SERVER['REQUEST_METHOD']=='GET'){
         );
         echo json_encode($Message);
     }
-}
+}*/
 
 
 elseif($_SERVER['REQUEST_METHOD']=='PUT'){
