@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 else{
                     $Message = array(
                         "Response"=>"Pqr Registrado.",
-                        "PQR's"=>$Result
+                        "PQRs"=>$Result
                     );
                     echo json_encode($Message);
                 }     
