@@ -134,3 +134,29 @@ body {
     box-shadow: 0 0 10px #000000;
     border-radius: 5px;
 }
+.dash .relleno .pqrs{
+    width: 100%;
+    /*margin: 0px 5% 0px 5%;*/
+    text-align: center;
+}
+.dash .relleno .pqrs td, .pqrs th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+.dash .relleno .pqrs tr:nth-child(even){background-color: #f2f2f2;}
+
+.dash .relleno .pqrs tr:hover {background-color: #ddd;}
+
+.dash .relleno .pqrs th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #4CAF50;
+    color: white;
+  }
+.dash .relleno .pqrs a{
+    color: black;
+    text-decoration: none;
+}
+.dash .relleno .pqrs a:hover{
+    color: rgb(131, 131, 131);
+}

@@ -10,10 +10,10 @@ var contenido = document.getElementById("datospqr1");
 for(let valor of guardado.PQRs){
     contenido.innerHTML += `
         <tr> 
-            <td>hola</td> 
-            <td>${ valor.asunto_pqr }</td>
-            <td>wert</td>
-            <td>34t</td>
-            <td>w4t4t</td> 
+            <td>${ valor.asunto_pqr }</td> 
+            <td>${ valor.descripcion_pqr }</td>
+            <td>${ valor.estado_pqr }</td>
+            <td>${ valor.fecha_pqr }</td>
+            <td><a href="">Ver</a> | <a href="">Elimiar</a></td> 
         </tr>`;
 }
