@@ -12,27 +12,27 @@ for(i = 0; i < guardado.PQRs.length; i++){
     console.log(text);
 }*/
 
-for(i = 0; i < guardado.PQRs.length; i++){
-    var text = "";
-    text +=i;
+for(let i = 0; i < guardado.PQRs.length; i++){
+    /*var text = "";
+    text +=i;*/
     contenido.innerHTML += `
         <tr> 
             <td>${ guardado.PQRs[i].asunto_pqr+i }</td> 
             <td>${ guardado.PQRs[i].descripcion_pqr }</td>
             <td>${ guardado.PQRs[i].estado_pqr }</td>
             <td>${ guardado.PQRs[i].fecha_pqr }</td>
-            <td><h1 href="" onclick="verpqr1(${ 'i' })" >Ver</h1> | <a onclick="eliminarpqr()" href="">Elimiar</a></td> 
+            <td><a href="" onclick="verpqr1(${ i })" >Ver</a> | <a onClick=\"return confirm('Estas seguro de eliminar?')\" href="">Elimiar</a></td> 
         </tr>`;
 }
 
 function verpqr1(e){
-    let q = e;
     alert("ver pqr");
-    console.log(q);
+    console.log(e);
 }
 
-function eliminarpqr(){
+function eliminarpqr(z){
     alert("borrar pqr");
+    console.log(z);
 }
 
 /*
@@ -45,5 +45,8 @@ for(let valor of guardado.PQRs){
             <td>${ valor.fecha_pqr }</td>
             <td><h1 href="" onclick="verpqr1(${ 'a' })" >Ver</h1> | <a onclick="eliminarpqr()" href="">Elimiar</a></td> 
         </tr>`;
+
+
+         onclick="eliminarpqr(${ guardado.PQRs[i].Id_pqr })"
 }
 */
