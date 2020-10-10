@@ -1,0 +1,48 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Cuenta Iniciada</title>
+    <link rel="stylesheet" href="Login-form/css/usuario.css">
+    <link rel="stylesheet" href="Login-form/css/normalize.css">
+    <script src="https://kit.fontawesome.com/5be49774fe.js" crossorigin="anonymous"></script>
+</head>
+
+<body onload="validacion()">
+
+    <nav class="user">
+        <div class="login">
+            <div class="pqr">
+                <h1>PQR´s LAWP</h1>                
+            </div>
+            
+            <div class="data">
+                <nav class="imguser" id="imguser">
+                    <img src="asset/imgusers/default.jpg" alt="imgUser">
+                </nav>
+                <nav class="nomb" >
+                    <h3 id="nomb">Nombre Prueba</h3>
+                    <p>Usuario</p>
+                </nav>
+            </div>
+            <div class="tab">
+                <h3><a href="http://localhost:8080/ProyectoLawpRemasterizado/ApiPhp/vista/usuariopqr.html" onclick="verpqr()"><i class="far fa-envelope-open"></i> Ver PQR's</a></h3>
+                <h3><a href=""><i class="far fa-envelope"></i> Crear PQR´s</a></h3>
+                <h3><a href=""><i class="far fa-user"></i> Ver Cuenta</a></h3>
+                <h3><a href=""><i class="far fa-user"></i> Ayuda</a></h3>
+            </div>
+        </div>
+        <div class="dash">
+            <div class="cabeza">
+                <h1><a href="http://localhost:8080/ProyectoLawpRemasterizado/ApiPhp/vista/" onclick="cerrar()"><i class="fas fa-sign-out-alt"></i> / Salir</a></h1>
+            </div>
+            <div class="masrelleno">
+                <h2><i class="fas fa-hand-sparkles"></i> Ver</h2>
+                <h3><a href=""><i class="fas fa-home"> / Inicio</a></i></h3>
+            </div>   
+        </div>
+    </nav>
+    <script src="asset/js/cerrarusuario.js"></script>
+    <script src="asset/js/fetchpqr.js"></script>
+    <script src="asset/js/validacionusuario.js"></script>
+</body>
+</html>
